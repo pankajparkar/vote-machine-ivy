@@ -1,5 +1,7 @@
-<p>
-  <button (click)="upvote()">+</button>
-  <button (click)="downvote()">-</button>
-  Total votes {{votes}}
+<p class="votes-container">
+  <span class="action-buttons">
+    <button (click)="upvote()">+</button>
+    <button (click)="downvote()">-</button>
+  </span>
+  &nbsp;&nbsp;{{votes}}
 </p>

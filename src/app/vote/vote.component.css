@@ -1,0 +1,10 @@
+.votes-container {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.action-buttons{
+    display: inline-flex;
+    width: 30px;
+    flex-direction: column;
+}
