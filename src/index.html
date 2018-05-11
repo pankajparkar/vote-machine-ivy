@@ -10,5 +10,9 @@
 </head>
 <body>
   <vm-vote votes="8"></vm-vote>
+  <script>
+    var customElement = document.querySelector('vm-vote');
+    customElement.addEventListener('voteChanges', (t) => {console.log(t)})
+  </script>
 </body>
 </html>
