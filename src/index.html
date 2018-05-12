@@ -9,10 +9,10 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <vm-vote votes="8"></vm-vote>
+  <vote-cmp votes="8"></vote-cmp>
   <script>
-    var customElement = document.querySelector('vm-vote');
-    customElement.addEventListener('voteChanges', (t) => {console.log(t)})
+    var customElement = document.querySelector('vote-cmp');
+    customElement.addEventListener('voteChanges', (t) => {console.log(t.detail)})
   </script>
 </body>
 </html>

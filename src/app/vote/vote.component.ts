@@ -21,7 +21,12 @@ export class VoteComponent implements OnInit {
     this.voteChanges.emit(this.votes = --this.votes);
   }
 
+  ngOnChanges(){
+    console.log("Value changed to "+ this.votes);
+  }
+
   ngOnInit() {
+    console.log("Votes component initialize with value "+ this.votes);
   }
 
 }

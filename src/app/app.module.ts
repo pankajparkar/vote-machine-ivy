@@ -15,8 +15,8 @@ import { VoteComponent } from './vote/vote.component';
 })
 export class AppModule { 
   constructor(private injector: Injector){
-    const customElement = createCustomElement(VoteComponent, { injector });
-    customElements.define('vm-vote', customElement);
+    const customElement = createCustomElement(VoteComponent, { injector: this.injector });
+    customElements.define('vote-cmp', customElement);
   }
 
   ngDoBootstrap(){
