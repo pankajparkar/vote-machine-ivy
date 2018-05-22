@@ -15,7 +15,7 @@
           "options": {
             "outputPath": "dist/vote-machine",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "main": "src/app/app.module.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [

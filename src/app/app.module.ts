@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, Type } from '@angular/core';
+//import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Injector, Type, ɵrenderComponent as renderComponent, enableProdMode, ɵComponentType as ComponentType } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 import { VoteComponent } from './vote/vote.component';
@@ -9,16 +9,22 @@ import { VoteComponent } from './vote/vote.component';
     VoteComponent
   ],
   imports: [
-    BrowserModule
+    //BrowserModule
   ],
   entryComponents: [VoteComponent],
 })
 export class AppModule { 
   constructor(private injector: Injector){
+    debugger
     const customElement = createCustomElement(VoteComponent, { injector: this.injector });
     customElements.define('vote-cmp', customElement);
   }
 
   ngDoBootstrap(){
+    debugger
   }
 }
+//prod mode enabled
+enableProdMode();
+
+renderComponent(VoteComponent);
