@@ -20,11 +20,15 @@ export class AppModule {
     customElements.define('vote-cmp', customElement);
   }
 
-  ngDoBootstrap(){
-    debugger
+  ngDoBootstrap(app){
+    console.log(app)
   }
 }
 //prod mode enabled
 enableProdMode();
 
-renderComponent(VoteComponent);
+//renderComponent(VoteComponent);
+
+function bootstrapRootComponent(app, name) {
+  app.bootstrap(VoteComponent);
+}
