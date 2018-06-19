@@ -21,6 +21,7 @@ export class AppModule {
   static ngInjectorDef = defineInjector({
     factory: () => new AppModule(),
     providers: [],
+    imports: undefined
   });
   ngDoBootstrap(app){
     console.log(app)
@@ -30,16 +31,15 @@ export class AppModule {
 enableProdMode();
 
 let injector = createInjector(AppModule);
-renderComponent(VoteComponent, {
-  injector: injector
-});
+renderComponent(VoteComponent, { injector });
 console.log("outside injector", injector)
+window['injector']= injector;
 debugger
 export function bootstrapRootComponent(injector) {
   // app.bootstrap(VoteComponent);
   // renderComponent(VoteComponent, {injector: app});
   console.log("bootstrapRootComponent", injector)
-  const customElement = createCustomElement(VoteComponent, { injector});
+  const customElement = createCustomElement(VoteComponent, { injector: injector});
   customElements.define('vote-cmp', customElement);
   
 }
