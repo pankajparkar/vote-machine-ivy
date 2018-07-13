@@ -21,7 +21,7 @@ export class AppModule {
   static ngInjectorDef = defineInjector({
     factory: () => new AppModule(),
     providers: [],
-    imports: undefined
+    imports: []
   });
   ngDoBootstrap(app){
     console.log(app)
@@ -31,7 +31,7 @@ export class AppModule {
 enableProdMode();
 
 let injector = createInjector(AppModule);
-renderComponent(VoteComponent, { injector });
+// renderComponent(VoteComponent, { injector });
 console.log("outside injector", injector)
 window['injector']= injector;
 debugger
