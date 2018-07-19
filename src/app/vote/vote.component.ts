@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Injector } from '@angular/core';
+import { createCustomElement } from '../../../node_modules/@angular/elements';
+import {createNgModuleRef} from '@angular/core/src/view/refs';
 
 @Component({
   selector: 'vm-vote',
@@ -11,22 +13,23 @@ export class VoteComponent implements OnInit {
   @Input() votes: number = 0;
   @Output() voteChanges: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(injector: Injector) {
+  }
 
-  upvote(){
+  upvote() {
     this.voteChanges.emit(this.votes = ++this.votes);
   }
 
-  downvote(){
+  downvote() {
     this.voteChanges.emit(this.votes = --this.votes);
   }
 
-  ngOnChanges(){
-    console.log("Value changed to "+ this.votes);
+  ngOnChanges() {
+    console.log("Value changed to " + this.votes);
   }
 
   ngOnInit() {
-    console.log("Votes component initialize with value "+ this.votes);
+    console.log("Votes component initialize with value " + this.votes);
   }
 
 }

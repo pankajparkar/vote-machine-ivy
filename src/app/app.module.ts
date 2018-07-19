@@ -1,6 +1,6 @@
 import { 
-  NgModule, Injector, Compiler, ɵrenderComponent as renderComponent,
-  enableProdMode, ɵComponentType as ComponentType, createInjector, defineInjector, NgModuleRef, StaticProvider } from '@angular/core';
+  NgModule, Injector, Compiler, ɵrenderComponent as renderComponent, ComponentFactoryResolver,
+  enableProdMode, ɵComponentType as ComponentType, createInjector, defineInjector, NgModuleRef, StaticProvider, Inject } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 // import { ComponentFactoryResolver as viewEngine_ComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
 // import { ComponentFactoryResolver } from '@angular/core/src/render3/component_ref';
@@ -20,48 +20,26 @@ import { VoteComponent } from './vote/vote.component';
 //     useValue: this,
 //   }
 // ];
-
+(CommonModule as any).ngInjectorDef = defineInjector({factory: () => new CommonModule});
 @NgModule({
   declarations: [
     VoteComponent
   ],
   imports: [
-    //CommonModule
-    //BrowserModule
+    CommonModule
   ],
   bootstrap: [VoteComponent],
   entryComponents: [VoteComponent],
 })
 export class AppModule { 
   constructor(){
-    // const customElement = createCustomElement(VoteComponent, { injector });
-    // customElements.define('vote-cmp', customElement);
   }
-  // static ngInjectorDef = defineInjector({
-  //   factory: () => new AppModule(),
-  //   providers: [],
-  //   imports: []
-  // });
   ngDoBootstrap(app){
     console.log(app)
   }
 }
 //prod mode enabled
 enableProdMode();
-let injector = Injector.create([])
-// let _compiler = injector.get(Compiler);
-// let appModule = _compiler.compileModuleAndAllComponentsAsync(AppModule);
-renderComponent(VoteComponent, {injector});
-// console.log("outside injector", injector)
-// window['injector']= injector;
-// debugger
-// export function bootstrapRootComponent(injector) {
-//   // app.bootstrap(VoteComponent);
-//   // renderComponent(VoteComponent, {injector: app});
-//   console.log("bootstrapRootComponent", injector)
-  // const customElement = createCustomElement(VoteComponent, { injector: injector});
-//   customElements.define('vote-cmp', customElement);
-  
-// }
-
-// bootstrapRootComponent(injector)
+let injector = createInjector(AppModule);
+let component = renderComponent(VoteComponent, {injector});
+console.log(component)
